@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hnlylgj.sensor"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  
+    <uses-permission android:name="android.permission.INTERNET" />
+  
+     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> 
+	 
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
+	 
+	 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> 
+	 
+	 <uses-permission android:name="android.permission.VIBRATE" /> 
+    
+    
+    
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:theme="@style/AppTheme" >
+        
+          <!-- 注册活动 -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SnapViewActivity"
+            android:label="@string/title_activity_snap_view" >
+        </activity>
+
+        <activity
+            android:name=".LoginBusActivity"
+            android:label="@string/title_activity_login_bus" >
+        </activity>
+        <activity
+            android:name=".TestmainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test" >
+        </activity>
+        
+          <activity
+            android:name=".SensorMainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+      <!-- 注册服务 -->
+      
+       <service
+            android:name=".SocketChannelService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name=".LGJCloudBusChannelService"
+            android:enabled="true"
+            android:exported="true"
+            android:priority="1000"
+            android:process=":lgjsocketchannelservice" >
+            <intent-filter>
+                <action android:name="com.hnlylgj.sensor.MY_CHANNNEL_SERVICE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        
+         <service
+            android:name=".LGJCloudBusChannelService2"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":lgjsocketchannelservice2" >
+            <intent-filter>
+                <action android:name="com.hnlylgj.sensor.MY_CHANNNEL_SERVICE2" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        
+        <service
+            android:name=".MyPullMessageService"
+            android:enabled="true"
+            android:exported="true" 
+            android:process=":lgjpullmessageservice">            
+             <intent-filter>
+                <action android:name="com.hnlylgj.sensor.MY_PULLMESSAGE_SERVICE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+      
+        <!-- 注册广播 -->
+        
+        <receiver android:name=".AutoStartIntentReceiver" >
+
+            <!-- 在filter中设定BOOT_COMPLETED为要捕获的信息 -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name=".AutoKeepLifeCheckReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_TICK" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name=".AutoKeepLifeSelfNotifyReceiver" >
+
+            <!-- 在filter中设定cloudbus.restart.action为要捕获的信息 -->
+            <intent-filter>
+                <action android:name="cloudbus.restart.action" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+       
+    </application>  
+
+</manifest>

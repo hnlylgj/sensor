@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<!--主界面的布局--> 
+<RelativeLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+      
+    > 
+    
+   
+    <RelativeLayout 
+     android:id="@+id/MainActivityrlTwo" 
+     android:layout_width="fill_parent" 
+     android:layout_height="45dp" 
+      
+     > 
+       
+    </RelativeLayout> 
+    
+   
+       
+ <GridView 
+  android:id="@+id/MainActivityGrid" 
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content" 
+  android:numColumns="3" 
+  android:columnWidth="80dp" 
+  android:layout_below="@+id/MainActivityrlTwo" 
+  android:layout_marginTop="5dp" 
+  /> 
+    
+      <RelativeLayout 
+    android:id="@+id/MainActivityrlThree" 
+     android:layout_width="fill_parent" 
+     android:layout_height="60dp" 
+     android:layout_alignParentBottom="true" 
+       
+     > 
+    
+     
+     <TextView
+        android:id="@+id/labeltitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff0000"
+         android:textSize="20sp"
+          android:textStyle="bold"
+        android:text="@string/labeltip2" />
+   
+    </RelativeLayout> 
+      
+</RelativeLayout> 
+
